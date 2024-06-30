@@ -17,10 +17,12 @@ const StyledHeaderText = styled.h1`
 
 export const headerText = "Klassiska 15-pusslet!";
 
+// props som huvudrubrik tar emot
 type HeaderProps = {
     text: string;
 };
 
+// komponenten huvudrubrik tar emot props och renderar css från styled component
 const Header: React.FC<HeaderProps> = ({ text }) => {
     return (
         <StyledHeader>

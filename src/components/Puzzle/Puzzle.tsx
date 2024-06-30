@@ -1,6 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Tile from './Tile';
+import Shuffle, { generateNumbersGrid, shuffleText } from './Shuffle';
+
+const StyledPuzzle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 0 auto;
+`;
 
 const StyledGrid = styled.div`
   display: grid;
@@ -9,14 +18,6 @@ const StyledGrid = styled.div`
   max-width: 240px;
   margin: 0 auto;
 `;
-
-// funktion som genererar en array med nummer för varje bricka i pusslet
-// returnerar siffror från 1 till 15 och 0 som representerar den tomma rutan
-const generateNumbersGrid = (): number[] => {
-    const numbers = Array.from({ length: 15 }, (_, i) => i + 1);
-    numbers.push(0);
-    return numbers;
-};
 
 const Puzzle: React.FC = () => {
     // useState-hook för att skapa ett tillstånd som hanterar gridet för pusslet
@@ -53,7 +54,13 @@ const Puzzle: React.FC = () => {
         }
     };
 
+    // funktion för att blanda bricka med nummer
+    const shuffleNumbers = () => {
+        setGrid(generateNumbersGrid());
+    };
+
     return (
+        <StyledPuzzle>
         <StyledGrid>
             {/* Itererar över varje element i grid-arrayen */}
             {grid.map((number, index) => (
@@ -65,6 +72,8 @@ const Puzzle: React.FC = () => {
                 />
             ))}
         </StyledGrid>
+    <Shuffle onClick={shuffleNumbers} text={shuffleText} />
+        </StyledPuzzle>
     );
 };
 

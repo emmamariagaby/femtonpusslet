@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Tile from './Tile';
 import Shuffle, { generateNumbersGrid, shuffleText } from './Shuffle';
+import PuzzleSolvedIndicator, {solvedText} from './PuzzleSolvedIndicator';
 
 const StyledPuzzle = styled.div`
   display: flex;
@@ -19,6 +20,7 @@ const StyledGrid = styled.div`
   margin: 0 auto;
 `;
 
+// komponenten Puzzle hanterar rendering av Grid, Tile, Shuffle och PuzzleSolvedIndicator
 const Puzzle: React.FC = () => {
     // useState-hook för att skapa ett tillstånd som hanterar gridet för pusslet
     const [grid, setGrid] = useState<number[]>(generateNumbersGrid());
@@ -54,7 +56,7 @@ const Puzzle: React.FC = () => {
         }
     };
 
-    // funktion för att blanda bricka med nummer
+    // funktion för att blanda brickor med nummer
     const shuffleNumbers = () => {
         setGrid(generateNumbersGrid());
     };
@@ -73,6 +75,7 @@ const Puzzle: React.FC = () => {
             ))}
         </StyledGrid>
     <Shuffle onClick={shuffleNumbers} text={shuffleText} />
+            <PuzzleSolvedIndicator grid={grid} text={solvedText} />
         </StyledPuzzle>
     );
 };

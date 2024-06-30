@@ -11,13 +11,12 @@ export const generateNumbersGrid = (): number[] => {
 
 export const shuffleText = "Slumpa";
 
-// props som blanda tar emot
 type ShuffleProps = {
     onClick: () => void;
     text: string;
 }
 
-// komponenten blanda tar emot props och renderar en knapp för att blanda brickor med nummer
+// komponenten Shuffle tar emot props och renderar en knapp för att blanda brickor med nummer
 const Shuffle: React.FC<ShuffleProps> = ({ onClick, text }) => {
     return (
         <button onClick={onClick}>{text}</button>

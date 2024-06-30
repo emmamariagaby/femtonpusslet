@@ -14,14 +14,13 @@ const StyledTile = styled.div<{ empty: boolean }>`
   cursor: ${({ empty }) => (empty ? 'default' : 'pointer')}; // Om empty är true, sätt muspekaren till default, annars till pointer
 `;
 
-// props som varje bricka tar emot
 type TileProps = {
     number: number;
     empty: boolean;
     onClick: () => void;
 }
 
-// komponenten bricka tar emot props och renderar css från styled component
+// komponenten Tile tar emot props och renderar en bricka med ett nummer
 const Tile: React.FC<TileProps> = ({ number, empty, onClick }) => {
     return (
         <StyledTile empty={empty} onClick={onClick}>

@@ -1,7 +1,24 @@
 import React from 'react';
+import styled from 'styled-components';
 
-// funktion som genererar en array med nummer för varje bricka i pusslet
-// returnerar blandade siffror från 1 till 15 och 0 som representerar den tomma rutan
+const StyledButton = styled.div`
+  background-color: #115363;
+  color: white;
+  border: 2px solid #115363;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-shadow: 2px 2px 4px #000000, -2px -2px 4px #deac2d;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: #a7aace;
+    border: 2px solid #a7aace;
+    transform: translateY(-2px);
+  }
+`;
+
 export const generateNumbersGrid = (): number[] => {
     const numbers = Array.from({ length: 15 }, (_, i) => i + 1);
     numbers.push(0);
@@ -9,17 +26,16 @@ export const generateNumbersGrid = (): number[] => {
     return numbers;
 };
 
-export const shuffleText = "Slumpa";
+export const shuffleText = "SLUMPA";
 
 type ShuffleProps = {
     onClick: () => void;
     text: string;
 }
 
-// komponenten Shuffle tar emot props och renderar en knapp för att blanda brickor med nummer
 const Shuffle: React.FC<ShuffleProps> = ({ onClick, text }) => {
     return (
-        <button onClick={onClick}>{text}</button>
+        <StyledButton onClick={onClick}>{text}</StyledButton>
     );
 };
 

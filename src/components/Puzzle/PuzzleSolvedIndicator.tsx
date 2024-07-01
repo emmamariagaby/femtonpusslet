@@ -1,35 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-const Message = styled.div`
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #dff0d8;
-  color: #3c763d;
-  border: 1px solid #d6e9c6;
-  border-radius: 4px;
+const StyledMessage = styled.div`
+  padding: 0;
+  margin: 0;
+  font-size: 34px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7c3338;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.8);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
 `;
 
-export const solvedText = "Grattis! Du har löst pusslet!";
+export const solvedText = "GRATTIS TILL VINSTEN!";
 
 type PuzzleSolvedIndicatorProps = {
     text: string;
     grid: number[];
 };
 
-// komponenten PuzzleSolvedIndicator tittar om pusslet är löst och visar ett meddelande om det är sant
 const PuzzleSolvedIndicator: React.FC<PuzzleSolvedIndicatorProps> = ({ grid, text}) => {
-    // useState-hook för att skapa ett tillstånd som hanterar om pusslet är löst
     const [solved, setSolved] = useState<boolean>(false);
 
     useEffect(() => {
-        // tittar om siffror i gridet är i rätt ordning för att avgöra om pusslet är löst
         const isSolved = grid.every((number, index) => number === (index + 1) % 16);
         setSolved(isSolved);
     }, [grid]);
 
-    // returnerar meddelande om pusslet är löst, annars null
-    return solved ? <Message>{text}</Message> : null;
+    return solved ? <StyledMessage>{text}</StyledMessage> : null;
 };
 
 export default PuzzleSolvedIndicator;

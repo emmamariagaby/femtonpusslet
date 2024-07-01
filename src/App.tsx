@@ -4,14 +4,15 @@ import Header, {headerText} from './components/Header/Header';
 import Page from './components/Page/Page'
 import Puzzle from "./components/Puzzle/Puzzle";
 
-// huvudkomponenten app som renderar sidans byggstenar och passar vidare props
 const App: React.FC = () => {
     return (
-        <Page>
+        <>
             <GlobalStyle/>
             <Header text={headerText}/>
+        <Page>
              <Puzzle/>
         </Page>
+            </>
     );
 }
 

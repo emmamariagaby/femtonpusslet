@@ -6,22 +6,25 @@ const StyledHeader = styled.header`
   justify-content: center;
   align-items: center;
   height: 80px;
-  color: #000000;
-`;
-
-const StyledHeaderText = styled.h1`
-  font-size: 24px;
-  font-weight: bold;
+  padding: 0;
   margin: 0;
 `;
 
-export const headerText = "Klassiska 15-pusslet";
+const StyledHeaderText = styled.h1`
+  font-size: 34px;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 10px;
+  margin: 8px;
+  text-shadow: 2px 2px 4px #000000, -2px -2px 4px #deac2d;
+`;
+
+export const headerText = "FEMTONPUSSLET";
 
 type HeaderProps = {
     text: string;
 };
 
-// komponenten Header tar emot props och renderar en text
 const Header: React.FC<HeaderProps> = ({ text }) => {
     return (
         <StyledHeader>

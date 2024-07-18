@@ -32,7 +32,7 @@ const Page = styled.div`
 
   
   @media (min-width: ${breakpoints.mobile}) {
-    width: 100%;
+    width: 90%;
   }
 
   @media (min-width: ${breakpoints.tablet}) {
@@ -41,7 +41,7 @@ const Page = styled.div`
   }
 
   @media (min-width: ${breakpoints.desktop}) {
-    width: 60%;
+    width: 55%;
   }
 `;
 

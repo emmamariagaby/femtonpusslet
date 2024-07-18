@@ -22,6 +22,7 @@ const Page = styled.div`
   background-color: #7c3338;
   background-image: radial-gradient(circle, #bfc1d9 20px, transparent 20px);
   background-size: 100px 100px;
+  border: solid 2px #bfc1d9;
   animation: ${background} 5s infinite;
   align-items: center;
   justify-content: center;
@@ -29,7 +30,6 @@ const Page = styled.div`
   position: relative;
   border-radius: 20%;
   overflow: hidden;
-
   
   @media (min-width: ${breakpoints.mobile}) {
     width: 90%;

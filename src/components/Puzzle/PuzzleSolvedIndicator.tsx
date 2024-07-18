@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+const breakpoints = {
+    mobile: '320px',
+    tablet: '768px',
+    desktop: '1024px'
+};
+
 const StyledMessage = styled.div`
   padding: 0;
   margin: 0;
-  font-size: 34px;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -18,6 +23,18 @@ const StyledMessage = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
+
+  @media (min-width: ${breakpoints.mobile}) {
+    font-size: 24px;
+  }
+
+  @media (min-width: ${breakpoints.tablet}) {
+    font-size: 34px;
+  }
+
+  @media (min-width: ${breakpoints.desktop}) {
+    font-size: 44px;
+  }
 `;
 
 export const solvedText = "GRATTIS TILL VINSTEN!";

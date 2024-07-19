@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Tile from './Tile';
-import Shuffle, { generateNumbersGrid, shuffleText } from './Shuffle';
-import PuzzleSolvedIndicator, {solvedText} from './PuzzleSolvedIndicator';
+import Tile from './components/Tile/Tile';
+import Shuffle, { generateNumbersGrid, shuffleText } from './components/Shuffle/Shuffle';
+import PuzzleSolvedIndicator, {solvedText} from './components/PuzzleSolvedIndicator/PuzzleSolvedIndicator';
 
 const StyledPuzzle = styled.div`
   display: flex;

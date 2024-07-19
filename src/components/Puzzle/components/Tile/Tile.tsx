@@ -14,6 +14,7 @@ const StyledTile = styled.div<{ empty: boolean }>`
   color: #ffffff;
   background-color: ${({ empty }) => (empty ? '#transparent' : '#116479')};
   border: ${({ empty }) => (empty ? '2px solid #ffffff' : '2px solid #116479')};
+  border-radius: 5px;
   cursor: ${({ empty }) => (empty ? 'default' : 'pointer')};
   
   @media (min-width: ${breakpoints.mobile}) {

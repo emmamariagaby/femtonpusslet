@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Tile from './components/Tile/Tile';
 import Shuffle, { generateNumbersGrid, shuffleText } from './components/Shuffle/Shuffle';
@@ -22,6 +22,11 @@ const StyledGrid = styled.div`
 
 const Puzzle: React.FC = () => {
     const [grid, setGrid] = useState<number[]>(generateNumbersGrid());
+    const [clickCount, setClickCount] = useState<number>(0);
+
+    useEffect(() => {
+        console.log("Antal klick:", clickCount);
+    }, [clickCount]);
 
     const handleTileClick = (index: number) => {
         const newGrid = [...grid];
@@ -40,11 +45,13 @@ const Puzzle: React.FC = () => {
             newGrid[emptyIndex] = newGrid[index];
             newGrid[index] = 0;
             setGrid(newGrid);
+            setClickCount(prevCount => prevCount + 1);
         }
     };
 
     const shuffleNumbers = () => {
         setGrid(generateNumbersGrid());
+        setClickCount(0);
     };
 
     return (
@@ -60,7 +67,7 @@ const Puzzle: React.FC = () => {
             ))}
         </StyledGrid>
     <Shuffle onClick={shuffleNumbers} text={shuffleText} />
-            <PuzzleSolvedIndicator grid={grid} text={solvedText} />
+            <PuzzleSolvedIndicator grid={grid} text={solvedText} clickCount={clickCount} playAgain={shuffleNumbers} />
         </StyledPuzzle>
     );
 };

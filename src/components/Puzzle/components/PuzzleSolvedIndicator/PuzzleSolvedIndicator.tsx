@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import Play, { playText } from '../Play/Play';
 
 const breakpoints = {
     mobile: '320px',
@@ -13,11 +14,13 @@ const StyledMessage = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #7c3338;
+  text-align: center;
+  color: #ffffff;
   font-weight: bold;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color:  #7c3338;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -38,13 +41,16 @@ const StyledMessage = styled.div`
 `;
 
 export const solvedText = "GRATTIS TILL VINSTEN!";
+export const clickCountText = (clickCount: number) => `DU LÖSTE PUSSLET MED ${clickCount} KLICK.`;
 
 type PuzzleSolvedIndicatorProps = {
     text: string;
     grid: number[];
+    clickCount: number;
+    playAgain: () => void;
 };
 
-const PuzzleSolvedIndicator: React.FC<PuzzleSolvedIndicatorProps> = ({ grid, text}) => {
+const PuzzleSolvedIndicator: React.FC<PuzzleSolvedIndicatorProps> = ({ grid, text, clickCount, playAgain}) => {
     const [solved, setSolved] = useState<boolean>(false);
 
     useEffect(() => {
@@ -52,7 +58,11 @@ const PuzzleSolvedIndicator: React.FC<PuzzleSolvedIndicatorProps> = ({ grid, tex
         setSolved(isSolved);
     }, [grid]);
 
-    return solved ? <StyledMessage>{text}</StyledMessage> : null;
+    return solved ? <StyledMessage><div>{text}</div>
+        <div>{clickCountText(clickCount)}</div><Play onClick={() => {
+            setSolved(false);
+            playAgain();
+        }} text={playText} /></StyledMessage> : null;
 };
 
 export default PuzzleSolvedIndicator;
